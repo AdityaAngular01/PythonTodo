@@ -26,3 +26,8 @@ def user_collection():
     if mongodb.database is None:
         raise Exception("Database not initialized. Did you forget startup event?")
     return mongodb.database.get_collection("users")
+
+def task_collection():
+    if mongodb.database is None:
+        raise Exception("Database not initialized. Did you forget startup event?")
+    return mongodb.database.get_collection("tasks")
