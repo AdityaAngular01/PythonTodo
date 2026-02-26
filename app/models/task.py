@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, Field
 from app.utils.helper import PyObjectId
 from bson import ObjectId
@@ -21,3 +22,7 @@ class TaskResponse(BaseModel):
     id: PyObjectId = Field(alias="_id")
     title: str
     is_completed: bool
+
+class TaskUpdate(BaseModel):
+    title: Optional[str] = Field(..., min_length=3, max_length=100)
+    is_completed: Optional[bool]

@@ -9,7 +9,7 @@ from app.models.user import UserResponse
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="/auth/login")
 
 
-async def get_current_user(token: str = Depends(oauth2_scheme)):
+async def get_current_user(token: str = Depends(oauth2_scheme))->UserResponse:
     try:
         payload = jwt.decode(token, ENV.SECRET_KEY, algorithms=[ENV.ALGORITHM])
         email: str = payload.get("sub")

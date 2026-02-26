@@ -19,7 +19,7 @@ async def connect_to_db():
 async def disconnect_from_db():
     if mongodb.client:
         mongodb.client.close()
-        print("❌ Disconnected from MongoDB")
+        print("Disconnected from MongoDB")
 
 
 def user_collection():
