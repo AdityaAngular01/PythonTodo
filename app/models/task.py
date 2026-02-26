@@ -18,5 +18,6 @@ class TaskInDB(BaseModel):
         json_encoders = {ObjectId: str}
 
 class TaskResponse(BaseModel):
+    id: PyObjectId = Field(alias="_id")
     title: str
     is_completed: bool

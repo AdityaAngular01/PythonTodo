@@ -13,7 +13,7 @@ mongodb = MongoDB()
 async def connect_to_db():
     mongodb.client = AsyncIOMotorClient(ENV.MONGO_URL)
     mongodb.database = mongodb.client[ENV.DATABASE_NAME]
-    print("✅ Connected to MongoDB")
+    print("Connected to MongoDB")
 
 
 async def disconnect_from_db():
@@ -22,7 +22,6 @@ async def disconnect_from_db():
         print("❌ Disconnected from MongoDB")
 
 
-# ✅ Use this anywhere
 def user_collection():
     if mongodb.database is None:
         raise Exception("Database not initialized. Did you forget startup event?")
