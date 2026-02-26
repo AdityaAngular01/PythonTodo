@@ -16,7 +16,7 @@ async def create_task_controller(current_user:UserResponse, task: TaskCreate):
 async def get_task_controller(current_user:UserResponse, task_id: str) -> TaskResponse:
     return await get_task_by_id(current_user, task_id)
 
-async def get_all_task_controller(current_user:UserResponse) -> List[TaskResponse]:
+async def get_all_task_controller(current_user:UserResponse):
     return await fetch_all_tasks(current_user)
 
 async def update_task_controller(current_user:UserResponse, task_id: str, task: TaskUpdate):
