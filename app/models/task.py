@@ -23,6 +23,11 @@ class TaskResponse(BaseModel):
     title: str
     is_completed: bool
 
+    class Config:
+        populate_by_name = True
+        arbitrary_types_allowed = True
+        json_encoders = {ObjectId: str}
+
 class TaskUpdate(BaseModel):
-    title: Optional[str] = Field(..., min_length=3, max_length=100)
+    title: Optional[str] = Field(min_length=3, max_length=100)
     is_completed: Optional[bool]
