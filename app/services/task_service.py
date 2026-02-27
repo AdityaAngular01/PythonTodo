@@ -11,7 +11,7 @@ from bson import ObjectId
 async def create_task_service(current_user: UserResponse ,task: TaskCreate):
     task_db = TaskInDB(title=task.title, user_id=current_user.id)
     await task_collection().insert_one(task_db.model_dump(by_alias=True))
-    return task_db
+    return TaskResponse(**task_db.model_dump(by_alias=True))
 
 async def get_task_service(current_user: UserResponse, task_id: str)-> TaskResponse:
     task = await task_collection().find_one({"_id": ObjectId(task_id), "user_id": ObjectId(current_user.id)})
